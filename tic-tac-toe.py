@@ -28,16 +28,16 @@ def enter_move(board):
     for x in range(len(board)):
         for y in board[x]:
             if y != 'x' and y != 'o':
-        	    valid.append(y)
-        	    
+                valid.append(y)
+                
     print('valid moves ', valid)
     try:
         p_move = int(input('Enter your move: '))
         for x in range(len(board)):
             for y in board[x]:
                 if (p_move in valid) and (y == p_move):
-        	        row = x
-        	        col = board[x].index(y)
+                    row = x
+                    col = board[x].index(y)
         board[row][col] = 'o'
         print(display_board(board))
         return True
@@ -53,7 +53,7 @@ def com_move(board):
     for x in range(len(board)):
         for y in board[x]:
             if y != 'x' and y != 'o':
-        	    valid.append(y)
+                valid.append(y)
     	    
     print('valid moves ', valid)
     c_move = choice(valid)
@@ -62,8 +62,8 @@ def com_move(board):
         for x in range(len(board)):
             for y in board[x]:
                 if (c_move in valid) and (y == c_move):
-        	        row = x
-        	        col = board[x].index(y)
+                    row = x
+                    col = board[x].index(y)
         board[row][col] = 'x'
         print(display_board(board))
         return True
@@ -121,10 +121,10 @@ def draw_move(board):
     else: return False
 
 def play_ttt():
-    board = [[1,2,3],[4,'x',6],[7,8,9]]
+    board = [[1,2,3],[4,5,6],[7,8,9]]
     status = True
+    print(display_board(board))
     while status == True:
-        print(display_board(board))
         user = enter_move(board)
         if user == True:
             u_vic = victory_for(board, 'o')
