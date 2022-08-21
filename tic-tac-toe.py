@@ -7,15 +7,15 @@ def display_board(board):
     return '''
     +--------+--------+--------+
     |        |        |        |
-    |   {}   |   {}   |   {}   |
+    |   {}    |   {}    |   {}    |
     |        |        |        |
     +--------+--------+--------+
     |        |        |        |
-    |   {}   |   {}   |   {}   |
+    |   {}    |   {}    |   {}    |
     |        |        |        |
     +--------+--------+--------+
     |        |        |        |
-    |   {}   |   {}   |   {}   |
+    |   {}    |   {}    |   {}    |
     |        |        |        |
     +--------+--------+--------+
     '''.format(board[0][0],board[0][1],board[0][2],board[1][0],board[1][1],board[1][2],board[2][0],board[2][1],board[2][2])
@@ -101,6 +101,7 @@ def victory_for(board, sign):
         if board[1][0] == 'o' and board[1][1] == 'o' and board[1][2] == 'o': return True
         if board[2][0] == 'o' and board[2][1] == 'o' and board[2][2] == 'o': return True
         if board[0][0] == 'o' and board[1][1] == 'o' and board[2][2] == 'o': return True
+        if board[0][2] == 'o' and board[1][1] == 'o' and board[2][0] == 'o': return True
         
     if sign == "x":
         if board[0][0] == 'x' and board[1][0] == 'x' and board[2][0] == 'x': return True
@@ -110,6 +111,7 @@ def victory_for(board, sign):
         if board[1][0] == 'x' and board[1][1] == 'x' and board[1][2] == 'x': return True
         if board[2][0] == 'x' and board[2][1] == 'x' and board[2][2] == 'x': return True
         if board[0][0] == 'x' and board[1][1] == 'x' and board[2][2] == 'x': return True
+        if board[0][2] == 'x' and board[1][1] == 'x' and board[2][0] == 'x': return True
         
     return False   
     
@@ -132,6 +134,11 @@ def play_ttt():
                 print('You Won')
                 status = False
                 continue
+        draw = draw_move(board)
+        if draw == True:
+            print('The game ended in a draw')
+            status = False
+            continue
         com = com_move(board)
         if com == True:
             c_vic = victory_for(board, 'x')
@@ -143,6 +150,7 @@ def play_ttt():
         if draw == True:
             print('The game ended in a draw')
             status = False
+            continue
 
 
 play_ttt()
