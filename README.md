@@ -209,7 +209,7 @@ If making a “good” move (.smartCoinFlip() returns True), then return the mos
 
 If making a “bad” move (.smartCoinFlip() returns False), then return a random character from the set of possible characters (use random.choice())
 
-## PROJECT 5 tic-tac-toe.py
+## PROJECT 5 tic-tac-toe.py --from python course project on netacad
 
 ### Scenario
 Your task is to write a simple program which pretends to play tic-tac-toe with the user. To make it all easier for you, we've decided to simplify the game. Here are our assumptions:
