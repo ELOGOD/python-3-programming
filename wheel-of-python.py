@@ -2,7 +2,7 @@ import json
 import random
 import time
 import sys
-sys.setExecutionLimit(600000) # let this take up to 10 minutes
+#sys.setExecutionLimit(600000) # let this take up to 10 minutes
 
 # PASTE YOUR WOFPlayer CLASS (from part A) HERE
 class WOFPlayer:
@@ -106,20 +106,26 @@ def getNumberBetween(prompt, min, max):
 #    { "type": "bankrupt", "text": "Bankrupt", "prize": false },
 #    { "type": "loseturn", "text": "Lose a turn", "prize": false }
 def spinWheel():
-    with open("wheel.json", 'r') as f:
-        wheel = json.loads(f.read())
+    try:
+        with open("wheel.json", 'r') as f:
+            wheel = json.loads(f.read())
+            return random.choice(wheel)
+    except: 
+        wheel = [{ "type": "cash", "text": "$950", "value": 950, "prize": "A trip to Ann Arbor!" }, { "type": "bankrupt", "text": "Bankrupt", "prize": False }, { "type": "loseturn", "text": "Lose a turn", "prize": False }]
         return random.choice(wheel)
 
 # Returns a category & phrase (as a tuple) to guess
 # Example:
 #     ("Artist & Song", "Whitney Houston's I Will Always Love You")
 def getRandomCategoryAndPhrase():
-    with open("phrases.json", 'r') as f:
-        phrases = json.loads(f.read())
+    try:
+        with open("phrases.json", 'r') as f:
+            phrases = json.loads(f.read())
 
-        category = random.choice(list(phrases.keys()))
-        phrase   = random.choice(phrases[category])
-        return (category, phrase.upper())
+            category = random.choice(list(phrases.keys()))
+            phrase   = random.choice(phrases[category])
+            return (category, phrase.upper())
+    except: return ("Artist & Song", "Whitney Houston's I Will Always Love You")
 
 # Given a phrase and a list of guessed letters, returns an obscured version
 # Example:
@@ -148,16 +154,16 @@ print('WHEEL OF PYTHON')
 print('='*15)
 print('')
 
-num_human = getNumberBetween('How many human players?', 0, 10)
+num_human = getNumberBetween('How many human players? ', 0, 10)
 
 # Create the human player instances
-human_players = [WOFHumanPlayer(input('Enter the name for human player #{}'.format(i+1))) for i in range(num_human)]
+human_players = [WOFHumanPlayer(input('Enter the name for human player #{} '.format(i+1))) for i in range(num_human)]
 
-num_computer = getNumberBetween('How many computer players?', 0, 10)
+num_computer = getNumberBetween('How many computer players? ', 0, 10)
 
 # If there are computer players, ask how difficult they should be
 if num_computer >= 1:
-    difficulty = getNumberBetween('What difficulty for the computers? (1-10)', 1, 10)
+    difficulty = getNumberBetween('What difficulty for the computers? (1-10) ', 1, 10)
 
 # Create the computer player instances
 computer_players = [WOFComputerPlayer('Computer {}'.format(i+1), difficulty) for i in range(num_computer)]
