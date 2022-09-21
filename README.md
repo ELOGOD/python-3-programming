@@ -419,3 +419,75 @@ Output: invalid
 Example 5:
 Input: s = "{[]}"
 Output: valid
+
+
+## Challenge test from Geeks for Geeks (September)
+
+### Odd Series
+Consider a sequence of numbers denoted by f(n) where f(i) can be expressed as :
+f (0) = 0 , f (1) = 1
+f (i) = f (i-1) + f (i-2) for each i > 1 .
+After a while, a new rule was introduced to the series that
+for each i > 0
+which is multiple of 5 ,
+value of f (i) is 11
+and the remaining series was calculated according to the previous rule.
+Geek wants fo find the value of f (N) % (10 + 7) for a given number N.
+Note: Your code will be executed on multiple testcases.
+-Example 1:
+Input:
+N = 2
+Output: 1
+Explanation:
+Geek knows that f(2) = f(1) + f(0)
+ f(2) = 0 + 1
+ f(2) = 1
+Answer would be 1 % (10 + 7) that is 1.
+-Example 2:
+Input:
+N = 5
+Output: 11
+Explanation: 
+Geek knows that 5 is a multiple of 5. 
+Hence, the answer is 11 % (109 + 7) that is 11.
+-Example 3:
+Input:
+N = 6
+Output: 14
+Explanation: 
+f(0) = 0, f(1) = 1, f(2) = 1, 
+f(3) = 2, f(4) = 3, f(5) = 11 
+f(6) = f(4) + f(5) = 3 + 11 = 14
+Answer would be 14 % (109 + 7) that is 14.
+
+### Sum up the beauty
+
+Given an array arr of length N. The beauty of any of its subarray is given as
+the number of elements in the subarray that occurs exactly once.
+Geek wants to calculate the sum of beauty of all possible subarrays. Note that
+subarray is any continuous part of the array.
+- Example 1:
+Input:
+N = 3
+arr[ ] = {2, 4, 2}
+Output: 8
+Explanation:
+All possible subarrays are
+{2} : beauty is 1.
+{4} : beauty is 1.
+{2} : beauty is 1.
+{2, 4} : beauty is 2.
+{4, 2} : beauty is 2.
+{2, 4, 2}: beauty is 1.
+The sum of all beauty is 1+ 1+ 1+ 2+ 2+ 1 = 8.
+- Example 2:
+Input:
+N = 2
+arr[ ] = {1, 1}
+Output: 2
+Explanation:
+All possible subarrays are 
+{1} : beauty is 1.
+{1,1} : beauty is 0 as no element occurs only once.
+{1} : beauty is 1.
+The sum of all beauty is  1 + 0 + 1 = 2.
