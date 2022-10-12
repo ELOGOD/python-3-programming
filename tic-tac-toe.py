@@ -1,4 +1,4 @@
-﻿import random
+﻿from time import sleep
 from random import choice
 
 def display_board(board):
@@ -43,6 +43,7 @@ def enter_move(board):
         return True
     except:
         print('Invalid Entry, ', p_move,' Miss a turn')
+        sleep(3)
         print(display_board(board))
         return False
         
@@ -58,6 +59,7 @@ def com_move(board):
     print('valid moves ', valid)
     c_move = choice(valid)
     print('Computer moves: ',c_move)
+    sleep(2)
     try:
         for x in range(len(board)):
             for y in board[x]:
@@ -69,6 +71,7 @@ def com_move(board):
         return True
     except:
         print('Invalid Entry, ', c_move,' Miss a turn')
+        sleep(3)
         print(display_board(board))
         return True
 
